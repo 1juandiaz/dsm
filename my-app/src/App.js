@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import './components/item-lista'
+import './components/item-lista';
 import ItemLista from "./components/item-lista";
+import './components/album-card';
+import AlbumCard from "./components/album-card";
+import './components/album-card-list';
+import AlbumCardList from "./components/album-card-list";
 
 class App extends Component {
 
@@ -19,7 +23,8 @@ class App extends Component {
             isToggleOn: !prevState.isToggleOn
         }));
     }
-  render() {
+
+    render() {
     return (
       <div className="App">
         <header className="App-header">
@@ -29,10 +34,7 @@ class App extends Component {
            <ItemLista value={item} id={index} /> )};
           </ul>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-          <button onClick={this.handleClick}>{this.state.isToggleOn ? 'ON' : 'OFF'}</button>
+        <button onClick={this.handleClick}>{this.state.isToggleOn ? 'ON' : 'OFF'}</button>
       </div>
     );
   }

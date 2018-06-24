@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-const name = ["Juan","Pablo", "ElputoAlCostado"];
+const name = ["Juan","Pablo"];
 ReactDOM.render(<App name={name} />, document.getElementById('root'));
 
 registerServiceWorker();
