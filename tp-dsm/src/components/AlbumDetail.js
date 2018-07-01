@@ -8,9 +8,7 @@ import { Actions } from 'react-native-router-flux';
 const AlbumDetail = ({ title, albumId }) => {
   const {
     headerContentStyle,
-    
-    headerTextStyle,
-    imageStyle
+    headerTextStyle
   } = styles;
 
   return (
@@ -18,10 +16,8 @@ const AlbumDetail = ({ title, albumId }) => {
       <CardSection>
         <View style={headerContentStyle}>
           <Text style={headerTextStyle}>{title}</Text>
-          
         </View>
       </CardSection>
-
       <CardSection>
         <Button onPress={() => Actions.photoList({albumId:albumId})}>
           See Now!
