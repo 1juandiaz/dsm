@@ -10,7 +10,7 @@ class PhotoList extends Component {
   state = { photos: null };
 
   componentWillMount() {
-    axios.get(`https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=6e8a597cb502b7b95dbd46a46e25db8d&photoset_id=${this.props.albumId}&user_id=141154827@N05&format=json&nojsoncallback=1`)
+    axios.get(`https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=6e8a597cb502b7b95dbd46a46e25db8d&photoset_id=${this.props.albumId}&user_id=31804708@N02&format=json&nojsoncallback=1`)
       .then(response => this.setState({ photos: response.data.photoset.photo }));
   }
 
@@ -51,66 +51,6 @@ class PhotoList extends Component {
 }
 
 export default PhotoList;
-
-// class PhotoList extends Component {
-//     state = { photos: null };
-//
-//
-//
-//     renderAlbums() {
-//         return this.state.photos;
-//     }
-//
-//
-//
-//     render() {
-//         console.log(this.state);
-//
-//
-//         if (!this.state.photos) {
-//             return (
-//                 <View style={[styles.container, styles.horizontal]}>
-//                     <ActivityIndicator size="large" color="#0000ff" style={{flex: 3}} />
-//                 </View>
-//             );
-//         }
-//
-//         return (
-//             <View style={{ flex: 1 }}>
-//                 <FlatList
-//                     data={this.renderAlbums()}
-//                     renderItem={({item}) => {return (
-//                         <ListItem
-//                             roundAvatar
-//                             title={item.title}
-//
-//                             avatar={{ uri: `https://farm${item.farm}.staticflickr.com/${item.server}/${item.id}_${item.secret}.jpg`}}
-//                             Button  onPress={() =>
-//
-//                             Actions.photoDetail({
-//                                     title:item.title ,
-//                                     imageUrl:`https://farm${item.farm}.staticflickr.com/${item.server}/${item.id}_${item.secret}.jpg`,
-//                                     photoId : item.id
-//                                 }
-//
-//                             )//end actions photo detail
-//
-//
-//                         }//fin on press button
-//
-//
-//
-//                         />//fin list item
-//
-//                     );
-//                     }}
-//                     keyExtractor={item => item.id}
-//
-//                 />
-//             </View>
-//         );
-//     }
-// }
 
 const styles = StyleSheet.create({
     container: {

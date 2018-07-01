@@ -8,7 +8,7 @@ class AlbumList extends Component {
 
   componentWillMount() {
     axios.get('https://api.flickr.com/services/rest/?method=flickr.photosets.getList&' +
-        'api_key=6e8a597cb502b7b95dbd46a46e25db8d&user_id=141154827@N05&format=json&nojsoncallback=1')
+        'api_key=6e8a597cb502b7b95dbd46a46e25db8d&user_id=31804708@N02&format=json&nojsoncallback=1')
       .then(response => this.setState({ photoset: response.data.photosets.photoset }));
   }
 
@@ -22,7 +22,7 @@ class AlbumList extends Component {
       if (!this.state.photoset) {
           return (
               <View style={[styles.container, styles.horizontal]}>
-                  <ActivityIndicator size="large" color="#0000ff" />
+                  <ActivityIndicator size="large" color="#6c923e" />
               </View>
           );
       }

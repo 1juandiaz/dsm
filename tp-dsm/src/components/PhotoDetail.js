@@ -3,8 +3,9 @@ import { Text, View, Image, Linking } from 'react-native';
 import Card from './Card';
 import CardSection from './CardSection';
 import Button from './Button';
+import PhotoComments from './PhotoComments';
 
-const PhotoDetail = ({ title, imageUrl }) => {
+const PhotoDetail = ({ title, imageUrl, photoId }) => {
   const {
     thumbnailStyle,
     headerContentStyle,
@@ -24,7 +25,7 @@ const PhotoDetail = ({ title, imageUrl }) => {
         </View>
         <View style={headerContentStyle}>
           <Text style={headerTextStyle}>{title}</Text>
-          
+
         </View>
       </CardSection>
 
@@ -40,6 +41,9 @@ const PhotoDetail = ({ title, imageUrl }) => {
           See Now!
         </Button>
       </CardSection>
+      {/*<CardSection>*/}
+        {/*<PhotoComments photoId={photoId}/>*/}
+      {/*</CardSection>*/}
     </Card>
   );
 };
