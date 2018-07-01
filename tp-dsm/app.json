@@ -11,6 +11,12 @@
     },
     "ios": {
       "supportsTablet": true
+    },
+    "android":{
+      "package":"com.dsm.myapp",
+      "versionCode":1
     }
   }
 }
+
+
