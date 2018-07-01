@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import { ScrollView, Text, View } from 'react-native';
+import { ScrollView, Text, View , FlatList, ActivityIndicator, StyleSheet,Linking } from 'react-native';
 import axios from 'axios';
 import PhotoDetail from './PhotoDetail';
+import { Actions } from 'react-native-router-flux';
+import { List, ListItem, SearchBar } from "react-native-elements";
+
 
 class PhotoList extends Component {
   state = { photos: null };
@@ -12,31 +15,111 @@ class PhotoList extends Component {
   }
 
   renderAlbums() {
-    return this.state.photos.map(photo =>
-      <PhotoDetail key={photo.title} title={photo.title} imageUrl={'https://farm${photo.farm}.staticflickr.com/' +
-      '${photo.server}/${photo.id}_${photo.secret}.jpg'} />
-    );
+    return this.state.photos;
   }
 
   render() {
     if (!this.state.photos) { 
 			return (
                 <View style={{ flex: 1 }}>
-					<Text>
-                        Loading...
-					</Text>
-                </View>
+					<ActivityIndicator size="large" color="#6c923e" style={{flex: 3}} />
+				</View>
 				);
     }
 
     return (
         <View style={{ flex: 1 }}>
-            <ScrollView>
-                {this.renderAlbums()}
-            </ScrollView>
+            <FlatList
+                data={this.renderAlbums()}
+                renderItem={({item}) => {return (
+                    <ListItem
+                        roundAvatar
+                        title={item.title}
+                        avatar={{ uri: `https://farm${item.farm}.staticflickr.com/${item.server}/${item.id}_${item.secret}.jpg`}}
+                        Button  onPress={() =>
+                        Actions.photoDetail({
+                                title:item.title ,
+                                imageUrl:`https://farm${item.farm}.staticflickr.com/${item.server}/${item.id}_${item.secret}.jpg`,
+                                photoId : item.id
+                            })}/>
+                );}}
+                keyExtractor={item => item.id}
+            />
         </View>
     );
   }
 }
 
 export default PhotoList;
+
+// class PhotoList extends Component {
+//     state = { photos: null };
+//
+//
+//
+//     renderAlbums() {
+//         return this.state.photos;
+//     }
+//
+//
+//
+//     render() {
+//         console.log(this.state);
+//
+//
+//         if (!this.state.photos) {
+//             return (
+//                 <View style={[styles.container, styles.horizontal]}>
+//                     <ActivityIndicator size="large" color="#0000ff" style={{flex: 3}} />
+//                 </View>
+//             );
+//         }
+//
+//         return (
+//             <View style={{ flex: 1 }}>
+//                 <FlatList
+//                     data={this.renderAlbums()}
+//                     renderItem={({item}) => {return (
+//                         <ListItem
+//                             roundAvatar
+//                             title={item.title}
+//
+//                             avatar={{ uri: `https://farm${item.farm}.staticflickr.com/${item.server}/${item.id}_${item.secret}.jpg`}}
+//                             Button  onPress={() =>
+//
+//                             Actions.photoDetail({
+//                                     title:item.title ,
+//                                     imageUrl:`https://farm${item.farm}.staticflickr.com/${item.server}/${item.id}_${item.secret}.jpg`,
+//                                     photoId : item.id
+//                                 }
+//
+//                             )//end actions photo detail
+//
+//
+//                         }//fin on press button
+//
+//
+//
+//                         />//fin list item
+//
+//                     );
+//                     }}
+//                     keyExtractor={item => item.id}
+//
+//                 />
+//             </View>
+//         );
+//     }
+// }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center'
+    },
+    horizontal: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        padding: 10
+    }
+});
