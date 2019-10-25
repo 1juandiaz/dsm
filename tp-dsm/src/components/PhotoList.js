@@ -34,7 +34,9 @@ class PhotoList extends Component {
                 renderItem={({item}) => {return (
                     <ListItem
                         roundAvatar
-                        title={item.title}
+                        title={<View>
+                            <Text style={styles.title}> {item.title} </Text>
+                        </View>}
                         avatar={{ uri: `https://farm${item.farm}.staticflickr.com/${item.server}/${item.id}_${item.secret}.jpg`}}
                         Button  onPress={() =>
                         Actions.photoDetail({
@@ -61,5 +63,9 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-around',
         padding: 10
+    },
+    title: {
+        color: 'black'
     }
 });
+

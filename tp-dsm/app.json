@@ -1,9 +1,9 @@
 {
   "expo": {
-    "name" : "DSM_DIV",
-    "sdkVersion": "27.0.0",
-    "githubUrl" : "https://github.com/1juandiaz/dsm/tree/master/tp-dsm",
-    "orientation" : "portrait" ,
+    "name": "DSM_DIV",
+    "sdkVersion": "35.0.0",
+    "githubUrl": "https://github.com/1juandiaz/dsm/tree/master/tp-dsm",
+    "orientation": "portrait",
     "icon": "./assets/icons/app-icon.png",
     "loading": {
       "icon": "./assets/icons/loading-icon.png",
@@ -12,11 +12,15 @@
     "ios": {
       "supportsTablet": true
     },
-    "android":{
-      "package":"com.dsm.myapp",
-      "versionCode":1
-    }
+    "android": {
+      "package": "com.dsm.myapp",
+      "versionCode": 1
+    },
+    "slug": "dsm_div",
+    "version": "0.1.0",
+    "platforms": [
+      "android",
+      "ios"
+    ]
   }
 }
-
-
